@@ -191,3 +191,16 @@ Learn more about how [navigation works](https://nextjs.org/docs/app/building-you
 
 >Next.js automatically prefetches the code for the linked route in the background. By the time the user clicks the link, the code for the destination page will already be loaded in the background, and this is what makes the page transition near-instant!
 
+
+### Deciding where to place your Suspense boundaries
+Where you place your Suspense boundaries will depend on a few things:  
+1. How you want the user to experience the page as it streams.  
+2. What content you want to prioritize.  
+3. If the components rely on data fetching.  
+Take a look at your dashboard page, is there anything you would've done differently?  
+Don't worry. There isn't a right answer.  
+1. You could stream the whole page like we did with loading.tsx... but that may lead to a longer loading time if one of the components has a slow data fetch.
+2. You could stream every component individually... but that may lead to UI popping into the screen as it becomes ready.
+3. You could also create a staggered effect by streaming page sections. But you'll need to create wrapper components.
+Where you place your suspense boundaries will vary depending on your application. In general, it's good practice to move your data fetches down to the components that need it, and then wrap those components in Suspense. But there is nothing wrong with streaming the sections or the whole page if that's what your application needs.  
+Don't be afraid to experiment with Suspense and see what works best, it's a powerful API that can help you create more delightful user experiences.  
