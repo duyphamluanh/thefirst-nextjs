@@ -204,3 +204,13 @@ Don't worry. There isn't a right answer.
 3. You could also create a staggered effect by streaming page sections. But you'll need to create wrapper components.
 Where you place your suspense boundaries will vary depending on your application. In general, it's good practice to move your data fetches down to the components that need it, and then wrap those components in Suspense. But there is nothing wrong with streaming the sections or the whole page if that's what your application needs.  
 Don't be afraid to experiment with Suspense and see what works best, it's a powerful API that can help you create more delightful user experiences.  
+  
+In general, what is considered good practice when working with Suspense and data fetching?  
+By moving data fetching down to the components that need it, you can create more granular Suspense boundaries. This allows you to stream specific components and prevent the UI from blocking.  
+
+### Why use URL search params?
+As mentioned above, you'll be using URL search params to manage the search state. This pattern may be new if you're used to doing it with client side state.  
+There are a couple of benefits of implementing search with URL params:  
++ Bookmarkable and Shareable URLs: Since the search parameters are in the URL, users can bookmark the current state of the application, including their search queries and filters, for future reference or sharing.  
++ Server-Side Rendering and Initial Load: URL parameters can be directly consumed on the server to render the initial state, making it easier to handle server rendering.  
++ Analytics and Tracking: Having search queries and filters directly in the URL makes it easier to track user behavior without requiring additional client-side logic.  
